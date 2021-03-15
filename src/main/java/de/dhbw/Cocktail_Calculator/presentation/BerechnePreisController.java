@@ -2,8 +2,6 @@ package de.dhbw.Cocktail_Calculator.presentation;
 
 import de.dhbw.Cocktail_Calculator.core.Getraenk;
 import de.dhbw.Cocktail_Calculator.core.Zutat;
-import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.CocktailDbResponse;
-import de.dhbw.Cocktail_Calculator.Ingredient;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.CocktailDBClient;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +17,7 @@ public class BerechnePreisController {
     public PreisResponse calc(@RequestParam("name") String name) {
         CocktailDBClient client = new CocktailDBClient();
 
-        Drink drink = client.getData(name).getDrinks().get(0);
+        Drink drink = client.getData(name).getDrinks().get(2); //für Tommys Margarita
 
         // Konvertierung von Drink zu Getränk
         Getraenk getraenk = convertDrink(drink);
@@ -28,8 +26,12 @@ public class BerechnePreisController {
         normiereMengen(getraenk);
 
         // Preis für Getränk berechnen
+        // die Mengen der 3 Zutaten müssen nun mit einem Preis berechnet werden
+        System.out.println(getraenk.getZutaten().get(0));
 
         // Rückgabe des Preises
+        // Der berechnete Preis wird nun über ein PreisResponse Objekt zurückgegeben
+
 
         Drink calculate = new Drink();
 
@@ -40,16 +42,23 @@ public class BerechnePreisController {
         for (Zutat z : getraenk.getZutaten()) {
             String mengeStr = z.getMenge();
 
-            if (mengeStr.endsWith("tsp")) {
-                int indexOfEinheit = mengeStr.indexOf("tsp"); // "1\/2 tsp "
+            if (mengeStr.endsWith("cl")) {
+                int indexOfEinheit = mengeStr.indexOf("cl");   //"4.5 cl"    // "1\/2 tsp "
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
-                mengeStr = mengeStr.replaceAll("\\/", "");
+                //mengeStr = mengeStr.replaceAll("\\/", "");
 
                 Double mengeDouble = Double.valueOf(mengeStr);
                 double inMilliliter = mengeDouble * 5;
 
                 z.setMengeInMl(inMilliliter);
-            } else if (mengeStr.endsWith("oz")) {
+            } else if (mengeStr.endsWith("spoons")) {
+                int indexOfEinheit = mengeStr.indexOf("spoons");
+                mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
+
+                Double mengeDouble = Double.valueOf(mengeStr);
+                double inMilliliter = mengeDouble * 5;
+
+                z.setMengeInMl(inMilliliter);
             }
         }
 
@@ -69,7 +78,12 @@ public class BerechnePreisController {
         zutat2.setMenge(drink.getStrMeasure2().trim());
         g.getZutaten().add(zutat2);
 
-        return g;
+        Zutat zutat3 = new Zutat();
+        zutat3.setName(drink.getStrIngredient3());
+        zutat3.setMenge(drink.getStrMeasure3().trim());
+        g.getZutaten().add(zutat3);
+
+        return g;        //gibt ein Getranke-Objekt g zurück dessen Liste<Zutat> mit 3 Zutaten gefüllt wird
     }
     /*
     @GetMapping(path = "/abc")

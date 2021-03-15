@@ -10,7 +10,7 @@ public class CalculationService {
         return preis;
     }
 
-
+/*
     public int mlAngabe(String name_Zutat, String menge_Zutat){
 
         if (name_Zutat.equals("Grapefruit juice")
@@ -27,8 +27,8 @@ public class CalculationService {
         }
 
 
-    }
-
+    }*/
+/*
     public int mlAngabeKonvertiert(String menge_Zutat) {
 
         switch (menge_Zutat) {
@@ -120,5 +120,5 @@ public class CalculationService {
             default:
                 return 0;
         }
-    }
+    }*/
 }
