@@ -1,10 +1,8 @@
-package de.dhbw.Cocktail_Calculator;
+package de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.HashMap;
 
 public class CocktailDBClient {
 

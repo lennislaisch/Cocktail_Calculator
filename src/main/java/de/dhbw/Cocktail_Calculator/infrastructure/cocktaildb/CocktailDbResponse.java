@@ -1,5 +1,6 @@
-package de.dhbw.Cocktail_Calculator;
+package de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb;
 
+import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,4 +1,4 @@
-package de.dhbw.Cocktail_Calculator;
+package de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
