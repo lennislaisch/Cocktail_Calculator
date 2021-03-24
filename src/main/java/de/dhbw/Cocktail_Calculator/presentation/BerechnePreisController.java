@@ -28,7 +28,8 @@ public class BerechnePreisController {
         // Preis für Getränk berechnen
         // die Mengen der 3 Zutaten müssen nun mit einem Preis berechnet werden
         System.out.println(getraenk.getZutaten().get(0));
-
+        System.out.println(getraenk.getZutaten().get(1));
+        System.out.println(getraenk.getZutaten().get(2));
         // Rückgabe des Preises
         // Der berechnete Preis wird nun über ein PreisResponse Objekt zurückgegeben
 
