@@ -11,15 +11,20 @@ public class NormierenService {
         for (Zutat z : getraenk.getZutaten()) {
             String mengeStr = z.getMenge();
 
+
+                //Umwandlung cl in Milliliter
             if (mengeStr.endsWith("cl")) {
-                int indexOfEinheit = mengeStr.indexOf("cl");   //"4.5 cl"    // "1\/2 tsp "
+                int indexOfEinheit = mengeStr.indexOf("cl");   //"4.5 cl"
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
-                //mengeStr = mengeStr.replaceAll("\\/", "");
+
 
                 Double mengeDouble = Double.valueOf(mengeStr);
                 double inMilliliter = mengeDouble * 10;
 
                 z.setMengeInMl(inMilliliter);
+
+
+                //Umwandlung spoon in Milliliter
             } else if (mengeStr.endsWith("spoons")) {
                 int indexOfEinheit = mengeStr.indexOf("spoons");
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();

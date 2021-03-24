@@ -45,7 +45,8 @@ public class BerechnePreisController {
         System.out.println(getraenk.getZutaten().get(2));
         dto.setName(getraenk.getName());
         dto.setZutaten2(getraenk.getZutaten());
-        // Rückgabe des Preises
+
+        // Rückgabe der Preise
         // Der berechnete Preise werden nun über ein PreisResponse Objekt zurückgegeben
         return dto;
     }
