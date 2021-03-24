@@ -7,4 +7,5 @@ public class Zutat {
     private String name;
     private String menge;
     private double mengeInMl;
+    private double einzelpreis;
 }

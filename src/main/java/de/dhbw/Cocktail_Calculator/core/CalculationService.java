@@ -11,22 +11,22 @@ public class CalculationService {
         for (Zutat z : getraenk.getZutaten())
             switch(z.getName()){                    //hätte auch bpsw. Repository anlegen können und über SQL Zutatendaten einfügen können
                 case "Tequila":                     //Preis für Flasche 700ml Tequila   13.00€
-                  preis = preis + (13.00 / 700) * z.getMengeInMl();
-                  System.out.println(preis);
+                  z.setEinzelpreis(Math.round((13.00 / 700) * z.getMengeInMl()*100.0) / 100.0);
+
                     break;
                 case "Lime Juice":                  //Preis für Flasche 500ml Limettensaft 2.00€
-                    preis = preis + (2.00 / 500) * z.getMengeInMl();
-                    System.out.println(preis);
+                    z.setEinzelpreis(Math.round((2.00 / 500) * z.getMengeInMl()* 100.0) / 100.0);
+
                     break;
                 case "Agave syrup":                 //Preis für Flasche 350ml Agaven syrup 3.50€
-                    preis = preis + (3.50/350) * z.getMengeInMl();
-                    System.out.println(preis);
+                   z.setEinzelpreis(Math.round((3.50/350) * z.getMengeInMl() *100.0) / 100.0);
                     break;
                 default:
                     System.out.println("Keine Preisangaben zu dieser Zutat");
                     break;
             }
-        preis = Math.round(preis * 100.0) / 100.0;  //
+        preis = getraenk.getZutaten().get(0).getEinzelpreis() + getraenk.getZutaten().get(1).getEinzelpreis() + getraenk.getZutaten().get(2).getEinzelpreis();
+        System.out.println(preis);
         return preis;
     }
 

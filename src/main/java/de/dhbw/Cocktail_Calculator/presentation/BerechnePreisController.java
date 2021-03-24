@@ -34,16 +34,19 @@ public class BerechnePreisController {
         // Getränke-Menge normieren
         normierenService.normiereMengen(getraenk);
 
+
+
+
         // Preis für Getränk berechnen
         // die Mengen der 3 Zutaten müssen nun mit einem Preis berechnet werden
+        dto.setPreis(calculationService.preisberechnen(getraenk));
         System.out.println(getraenk.getZutaten().get(0));
         System.out.println(getraenk.getZutaten().get(1));
         System.out.println(getraenk.getZutaten().get(2));
-        // Rückgabe des Preises
-        // Der berechnete Preis wird nun über ein PreisResponse Objekt zurückgegeben
-
-        dto.setPreis(calculationService.preisberechnen(getraenk));
         dto.setName(getraenk.getName());
+        dto.setZutaten2(getraenk.getZutaten());
+        // Rückgabe des Preises
+        // Der berechnete Preise werden nun über ein PreisResponse Objekt zurückgegeben
         return dto;
     }
 
