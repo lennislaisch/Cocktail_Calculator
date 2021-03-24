@@ -24,7 +24,7 @@ public class BerechnePreisController {
     @GetMapping
     public PreisResponse calc(@RequestParam("name") String name) {
         PreisResponse dto = new PreisResponse();
-        CocktailDBClient client = new CocktailDBClient();
+        CocktailDBClient client = new CocktailDBClient();                                   //eventuell in Auslagern in Core damit keine Abhängigkeit zwischen Core und Presentation
 
         Drink drink = client.getData(name).getDrinks().get(2); //für Tommys Margarita
 

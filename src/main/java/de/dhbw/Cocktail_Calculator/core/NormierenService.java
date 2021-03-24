@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class NormierenService {
-    public void normiereMengen(Getraenk xy) {
-        Getraenk getraenk = xy;
+    public void normiereMengen(Getraenk getraenk) {
+
         for (Zutat z : getraenk.getZutaten()) {
             String mengeStr = z.getMenge();
 

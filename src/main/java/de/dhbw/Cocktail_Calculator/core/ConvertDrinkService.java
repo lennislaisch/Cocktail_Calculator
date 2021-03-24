@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ConvertDrinkService {
-        public Getraenk convertDrink(Drink xy) {
-            Drink drink = xy;
+        public Getraenk convertDrink(Drink drink) {
+
         Getraenk g = new Getraenk();
         g.setName(drink.getStrDrink());
 
