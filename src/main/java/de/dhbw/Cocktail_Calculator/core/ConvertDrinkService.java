@@ -26,6 +26,6 @@ public class ConvertDrinkService {
         zutat3.setMenge(drink.getStrMeasure3().trim());
         g.getZutaten().add(zutat3);
 
-        return g;        //gibt ein Getranke-Objekt g zurück dessen Liste<Zutat> mit 3 Zutaten gefüllt wird
+        return g;        //gibt ein Getranke-Objekt g zurück dessen Liste<Zutat> mit Zutaten gefüllt wird
     }
 }
