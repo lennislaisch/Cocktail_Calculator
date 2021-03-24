@@ -1,9 +1,11 @@
 package de.dhbw.Cocktail_Calculator.presentation;
 
+import de.dhbw.Cocktail_Calculator.core.CalculationService;
 import de.dhbw.Cocktail_Calculator.core.Getraenk;
 import de.dhbw.Cocktail_Calculator.core.Zutat;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.CocktailDBClient;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("api/v1/cocktails")
 public class BerechnePreisController {
+    @Autowired
+    private CalculationService calculationService;
 
     @GetMapping
     public PreisResponse calc(@RequestParam("name") String name) {
+        PreisResponse dto = new PreisResponse();
         CocktailDBClient client = new CocktailDBClient();
 
         Drink drink = client.getData(name).getDrinks().get(2); //für Tommys Margarita
@@ -33,10 +38,13 @@ public class BerechnePreisController {
         // Rückgabe des Preises
         // Der berechnete Preis wird nun über ein PreisResponse Objekt zurückgegeben
 
+        dto.setPreis(calculationService.preisberechnen(getraenk));
+        dto.setName(getraenk.getName());
 
-        Drink calculate = new Drink();
 
-        return new PreisResponse();
+
+
+        return dto;
     }
 
     private void normiereMengen(Getraenk getraenk) {
@@ -49,7 +57,7 @@ public class BerechnePreisController {
                 //mengeStr = mengeStr.replaceAll("\\/", "");
 
                 Double mengeDouble = Double.valueOf(mengeStr);
-                double inMilliliter = mengeDouble * 5;
+                double inMilliliter = mengeDouble * 10;
 
                 z.setMengeInMl(inMilliliter);
             } else if (mengeStr.endsWith("spoons")) {
@@ -57,7 +65,7 @@ public class BerechnePreisController {
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
 
                 Double mengeDouble = Double.valueOf(mengeStr);
-                double inMilliliter = mengeDouble * 5;
+                double inMilliliter = mengeDouble * 15;
 
                 z.setMengeInMl(inMilliliter);
             }

@@ -1,12 +1,32 @@
 package de.dhbw.Cocktail_Calculator.core;
 
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CalculationService {
-    public int preisberechnen(Drink drink) {
-        int preis = 0;
+    public double preisberechnen(Getraenk getraenk) {
+        double preis = 0;
 
-
+        for (Zutat z : getraenk.getZutaten())
+            switch(z.getName()){                    //hätte auch bpsw. Repository anlegen können und über SQL Zutatendaten einfügen können
+                case "Tequila":                     //Preis für Flasche 700ml Tequila   13.00€
+                  preis = preis + (13.00 / 700) * z.getMengeInMl();
+                  System.out.println(preis);
+                    break;
+                case "Lime Juice":                  //Preis für Flasche 500ml Limettensaft 2.00€
+                    preis = preis + (2.00 / 500) * z.getMengeInMl();
+                    System.out.println(preis);
+                    break;
+                case "Agave syrup":                 //Preis für Flasche 350ml Agaven syrup 3.50€
+                    preis = preis + (3.50/350) * z.getMengeInMl();
+                    System.out.println(preis);
+                    break;
+                default:
+                    System.out.println("Keine Preisangaben zu dieser Zutat");
+                    break;
+            }
+        preis = Math.round(preis * 100.0) / 100.0;  //
         return preis;
     }
 

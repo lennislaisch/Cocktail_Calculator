@@ -15,7 +15,6 @@ import lombok.*;
 @Data
 public class Getraenk {
 	private int kosten=0;
-	private int menge =0;
 	private String name = "";
 
 	@Singular
