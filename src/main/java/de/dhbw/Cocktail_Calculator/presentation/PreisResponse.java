@@ -10,5 +10,5 @@ import java.util.List;
 public class PreisResponse {
     private String name;
     private double preis;
-    private List<Zutat> zutaten2 = new ArrayList<>();
+    private List<Zutat> zutatenliste = new ArrayList<>();
 }
