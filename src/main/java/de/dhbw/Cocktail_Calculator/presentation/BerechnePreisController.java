@@ -22,11 +22,11 @@ public class BerechnePreisController {
     private ConvertDrinkService convertDrinkService;
 
     @GetMapping
-    public PreisResponse calc(@RequestParam("name") String name) {
+    public PreisResponse calc(@RequestParam("name") String name) {                          //api/v1/cocktails?name=
         PreisResponse dto = new PreisResponse();                                            //dto ist glaub doppelt gemoppelt aber, es funktioniert
-        CocktailDBClient client = new CocktailDBClient();                                   //eventuell in Auslagern in Core damit keine Abhängigkeit zwischen Core und Presentation
+        CocktailDBClient client = new CocktailDBClient();
 
-        Drink drink = client.getData(name).getDrinks().get(2);                              //für Tommys Margarita
+        Drink drink = client.getData(name).getDrinks().get(2);                              //funktioniert aktuell nur für Margarita
 
         // Konvertierung von Drink zu Getränk
         Getraenk getraenk = convertDrinkService.convertDrink(drink);
