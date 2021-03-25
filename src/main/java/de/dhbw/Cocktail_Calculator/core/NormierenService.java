@@ -14,7 +14,7 @@ public class NormierenService {
 
                 //Umwandlung cl in Milliliter
             if (mengeStr.endsWith("cl")) {
-                int indexOfEinheit = mengeStr.indexOf("cl");   //"4.5 cl"
+                int indexOfEinheit = mengeStr.indexOf("cl");   //"4.5 cl"           //Schneidet cl vom String ab
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
 
 
@@ -26,7 +26,7 @@ public class NormierenService {
 
                 //Umwandlung spoon in Milliliter
             } else if (mengeStr.endsWith("spoons")) {
-                int indexOfEinheit = mengeStr.indexOf("spoons");
+                int indexOfEinheit = mengeStr.indexOf("spoons");                //Schneidet spoon vom String ab
                 mengeStr = mengeStr.substring(0, indexOfEinheit).trim();
 
                 Double mengeDouble = Double.valueOf(mengeStr);

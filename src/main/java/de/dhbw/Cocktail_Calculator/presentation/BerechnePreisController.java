@@ -23,10 +23,10 @@ public class BerechnePreisController {
 
     @GetMapping
     public PreisResponse calc(@RequestParam("name") String name) {
-        PreisResponse dto = new PreisResponse();
+        PreisResponse dto = new PreisResponse();                                            //dto ist glaub doppelt gemoppelt aber, es funktioniert
         CocktailDBClient client = new CocktailDBClient();                                   //eventuell in Auslagern in Core damit keine Abhängigkeit zwischen Core und Presentation
 
-        Drink drink = client.getData(name).getDrinks().get(2); //für Tommys Margarita
+        Drink drink = client.getData(name).getDrinks().get(2);                              //für Tommys Margarita
 
         // Konvertierung von Drink zu Getränk
         Getraenk getraenk = convertDrinkService.convertDrink(drink);
@@ -37,12 +37,8 @@ public class BerechnePreisController {
 
 
 
-        // Preis für Getränk berechnen
-        // die Mengen der 3 Zutaten müssen nun mit einem Preis berechnet werden
+        // Preis für Getränk und Zutaten berechnen
         dto.setPreis(calculationService.preisberechnen(getraenk));
-        System.out.println(getraenk.getZutaten().get(0));
-        System.out.println(getraenk.getZutaten().get(1));
-        System.out.println(getraenk.getZutaten().get(2));
         dto.setName(getraenk.getName());
         dto.setZutatenliste(getraenk.getZutaten());
 

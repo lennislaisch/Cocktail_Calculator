@@ -15,13 +15,13 @@ public class CocktailDBClient {
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
-                .queryParam("s", cocktailName);
+                .queryParam("s", cocktailName);                                     //entspricht https://www.thecocktaildb.com/api/json/v1/1/search.php?s=cocktailName
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<CocktailDbResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, CocktailDbResponse.class);
 
-        return response.getBody();
+        return response.getBody();          //liefert Liste von Drinks
     }
 }
