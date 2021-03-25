@@ -1,6 +1,6 @@
 package de.dhbw.Cocktail_Calculator.presentation;
 
-import de.dhbw.Cocktail_Calculator.core.Zutat;
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Zutat;
 import lombok.Data;
 
 import java.util.ArrayList;

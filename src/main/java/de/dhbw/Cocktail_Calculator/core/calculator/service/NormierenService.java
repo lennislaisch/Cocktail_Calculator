@@ -1,8 +1,9 @@
-package de.dhbw.Cocktail_Calculator.core;
+package de.dhbw.Cocktail_Calculator.core.calculator.service;
 
 
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Getraenk;
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Zutat;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class NormierenService {

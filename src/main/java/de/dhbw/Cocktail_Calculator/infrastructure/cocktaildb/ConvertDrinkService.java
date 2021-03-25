@@ -1,6 +1,8 @@
-package de.dhbw.Cocktail_Calculator.core;
+package de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb;
 
 
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Getraenk;
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Zutat;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
 import org.springframework.stereotype.Service;
 

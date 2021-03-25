@@ -1,4 +1,4 @@
-package de.dhbw.Cocktail_Calculator.core;
+package de.dhbw.Cocktail_Calculator.core.calculator.model;
 
 import lombok.Data;
 

@@ -1,7 +1,10 @@
 package de.dhbw.Cocktail_Calculator.presentation;
 
-import de.dhbw.Cocktail_Calculator.core.*;
+import de.dhbw.Cocktail_Calculator.core.calculator.model.Getraenk;
+import de.dhbw.Cocktail_Calculator.core.calculator.service.CalculationService;
+import de.dhbw.Cocktail_Calculator.core.calculator.service.NormierenService;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.CocktailDBClient;
+import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.ConvertDrinkService;
 import de.dhbw.Cocktail_Calculator.infrastructure.cocktaildb.Drink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
